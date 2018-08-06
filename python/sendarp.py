@@ -12,13 +12,13 @@ sr1p()  : 자체 ether() 계층으로 패킷을 전송하고, 답을 기다림
 '''
 
 def getMacByIP(host):
-  try:
-      ans,unans = srp( Ether(dst="ff:ff:ff:ff:ff:ff") / ARP(pdst=host) )
-      for s,r in ans:
-          return r.src
+    try:
+        ans,unans = srp( Ether(dst="ff:ff:ff:ff:ff:ff") / ARP(pdst=host) )
+        for s,r in ans:
+            return r.src
 
-  except Exception, e:
-      return e
+    except Exception, e:
+        return e
 
 def sendarp(smac, dmac, sip, dip):
     sendp(Ether(src=smac, dst=dmac) / ARP(hwsrc=smac, psrc=sip, hwdst=dmac, pdst=dip))
