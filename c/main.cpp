@@ -73,11 +73,9 @@ int main() {
     struct sockaddr_ll addr;
     addr.sll_family = PF_PACKET;
     addr.sll_protocol = htons(ETH_P_IP);
-    // addr.sll_ifindex = 사용하고자하는 인터페이스의 인덱스;
     memcpy(addr.sll_addr, dmac, sizeof(dmac));
 
     struct ether_arp packet;
-
 
     packet.arp_hrd=htons(ARPHRD_ETHER);
     packet.arp_pro=htons(ETH_P_IP);
